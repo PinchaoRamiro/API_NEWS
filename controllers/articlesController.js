@@ -37,6 +37,9 @@ export const getArticlesById = async (req, res) => {
       },
     });
     console.log(response.data);
+    if(response.data == error){
+      return res.status(404).send("Artículo no encontrado.");
+    }
     return res.send(response.data);
   } catch (error) {
     console.error(error); // Esto te ayudará a depurar el problema imprimiendo el error en la consola
