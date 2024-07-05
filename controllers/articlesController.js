@@ -3,7 +3,7 @@ import NEWS_API from '../api/NEWS_API.js';
 export const getArticles = async (req, res) => {
     const query = req.query.query;
     const category = req.query.category;
-    const language = req.query.language || "en";
+    const language = req.query.language || "en-US";
     const page = req.query.page || 1;
     const pageSize = req.query.pageSize || 10;
     const fromDate = req.query.fromDate;
@@ -36,7 +36,7 @@ export const getArticlesById = async (req, res) => {
         articleUri: id,
       },
     });
-    console.log(response.data);
+    res.send(response.data);
     if(response.data == error){
       return res.status(404).send("Artículo no encontrado.");
     }
